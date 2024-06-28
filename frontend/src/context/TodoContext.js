@@ -8,6 +8,8 @@ export const TodoProvider = ({ children }) => {
   const [filter, setFilter] = useState("all");
   const [projects, setProjects] = useState(["Default"]);
 
+  const [currentProject, setCurrentProject] = useState("Default");
+
   useEffect(() => {
     fetchTodos();
   }, []);
@@ -21,6 +23,35 @@ export const TodoProvider = ({ children }) => {
     }
   };
 
+  const editProject = (oldName, newName) => {
+    if (!projects.includes(newName)) {
+      setProjects((prevProjects) =>
+        prevProjects.map((p) => (p === oldName ? newName : p))
+      );
+      setTodos((prevTodos) =>
+        prevTodos.map((todo) =>
+          todo.project === oldName ? { ...todo, project: newName } : todo
+        )
+      );
+      if (currentProject === oldName) {
+        setCurrentProject(newName);
+      }
+    }
+  };
+
+  const deleteProject = (projectName) => {
+    if (projectName !== "Default") {
+      setProjects((prevProjects) =>
+        prevProjects.filter((p) => p !== projectName)
+      );
+      setTodos((prevTodos) =>
+        prevTodos.filter((todo) => todo.project !== projectName)
+      );
+      if (currentProject === projectName) {
+        setCurrentProject("Default");
+      }
+    }
+  };
   const addTodo = async (title, project = "Default") => {
     try {
       const response = await axios.post("http://localhost:8001/api/todos", {
@@ -90,6 +121,7 @@ export const TodoProvider = ({ children }) => {
   const addProject = (projectName) => {
     if (!projects.includes(projectName)) {
       setProjects((prevProjects) => [...prevProjects, projectName]);
+      setCurrentProject(projectName);
     }
   };
 
@@ -119,10 +151,14 @@ export const TodoProvider = ({ children }) => {
         filter,
         setFilter,
         projects,
+        currentProject,
+        setCurrentProject,
         addTodo,
         toggleComplete,
         toggleStar,
         addProject,
+        editProject,
+        deleteProject,
         editTodo,
         deleteTodo,
       }}

@@ -91,6 +91,7 @@ function TodoList() {
                 </button>
               </>
             )}
+            <span className="todo-project">{todo.project}</span>
           </li>
         ))}
       </ul>

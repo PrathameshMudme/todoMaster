@@ -221,3 +221,113 @@ section {
   width: 16px;
   height: 16px;
 }
+
+/* ... existing styles ... */
+
+.projects li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+}
+
+.projects li.active {
+  background-color: #3a3a3c;
+}
+
+.projects li span {
+  flex-grow: 1;
+}
+
+.projects li div {
+  display: flex;
+  gap: 5px;
+}
+
+.projects li button,
+.add-project-form button {
+  background-color: #8583e9;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 0.8em;
+}
+
+.add-project-form {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.add-project-form input {
+  flex-grow: 1;
+  padding: 5px 10px;
+  border: none;
+  background-color: #3a3a3c;
+  color: #ffffff;
+  border-radius: 5px;
+}
+
+.todo-project {
+  font-size: 0.8em;
+  color: #8583e9;
+  margin-left: 10px;
+}
+
+.todo-list li {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: #3a3a3c;
+  border-radius: 10px;
+  flex-wrap: wrap;
+}
+
+.todo-list li > * {
+  margin-right: 10px;
+}
+
+.todo-list li span:first-of-type {
+  flex-grow: 1;
+}
+
+.todo-list li .todo-project {
+  width: 100%;
+  margin-top: 5px;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  color: #8583e9;
+}
+
+.icon-button svg {
+  width: 20px;
+  height: 20px;
+}
+
+.projects li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.projects li > span {
+  flex-grow: 1;
+  cursor: pointer;
+}
+
+.projects li > div {
+  display: flex;
+  gap: 5px;
+}
