@@ -16,7 +16,9 @@ export const TodoProvider = ({ children }) => {
 
   const fetchTodos = async () => {
     try {
-      const response = await axios.get("http://localhost:8001/api/todos");
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKENDURL}/api/todos`
+      );
       setTodos(response.data);
     } catch (error) {
       console.error("Error fetching todos:", error);
@@ -54,11 +56,14 @@ export const TodoProvider = ({ children }) => {
   };
   const addTodo = async (title, project = "Default") => {
     try {
-      const response = await axios.post("http://localhost:8001/api/todos", {
-        title,
-        project,
-        createdAt: new Date(),
-      });
+      const response = await axios.post(
+        `${process.env.REACT_APP_BACKENDURL}/api/todos`,
+        {
+          title,
+          project,
+          createdAt: new Date(),
+        }
+      );
       setTodos((prevTodos) => [...prevTodos, response.data]);
     } catch (error) {
       console.error("Error adding todo:", error);
@@ -68,7 +73,7 @@ export const TodoProvider = ({ children }) => {
   const editTodo = async (id, title) => {
     try {
       const response = await axios.patch(
-        `http://localhost:8001api/todos/${id}`,
+        `${process.env.REACT_APP_BACKENDURL}/todos/${id}`,
         { title }
       );
       setTodos((prevTodos) =>
@@ -81,7 +86,7 @@ export const TodoProvider = ({ children }) => {
 
   const deleteTodo = async (id) => {
     try {
-      await axios.delete(`http://localhost:8001/api/todos/${id}`);
+      await axios.delete(`${process.env.REACT_APP_BACKENDURL}/api/todos/${id}`);
       setTodos((prevTodos) => prevTodos.filter((t) => t._id !== id));
     } catch (error) {
       console.error("Error deleting todo:", error);
@@ -92,7 +97,7 @@ export const TodoProvider = ({ children }) => {
     try {
       const todo = todos.find((t) => t._id === id);
       const response = await axios.patch(
-        `http://localhost:8001/api/todos/${id}`,
+        `${process.env.REACT_APP_BACKENDURL}/api/todos/${id}`,
         { completed: !todo.completed }
       );
       setTodos((prevTodos) =>
@@ -107,7 +112,7 @@ export const TodoProvider = ({ children }) => {
     try {
       const todo = todos.find((t) => t._id === id);
       const response = await axios.patch(
-        `http://localhost:8001/api/todos/${id}`,
+        `${process.env.REACT_APP_BACKENDURL}/api/todos/${id}`,
         { starred: !todo.starred }
       );
       setTodos((prevTodos) =>

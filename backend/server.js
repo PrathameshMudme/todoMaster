@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 8001;
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.get("/", (req, res) => res.send("Tasker is LIVE"));
 app.use("/api/todos", todoRoutes);
 
 // Connect to MongoDB

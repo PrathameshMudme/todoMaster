@@ -331,3 +331,123 @@ section {
   display: flex;
   gap: 5px;
 }
+
+/* Customize scrollbar for webkit browsers (Chrome, Safari, newer versions of Edge) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #000000;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #333333;
+}
+
+/* Customize scrollbar for Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #000000 transparent;
+}
+
+/* Ensure the todo list and projects list have a fixed height and scroll */
+.todo-list,
+.projects {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+/* Optional: Hide scrollbar when not scrolling */
+.todo-list:not(:hover)::-webkit-scrollbar-thumb,
+.projects:not(:hover)::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.todo-list:not(:hover),
+.projects:not(:hover) {
+  scrollbar-color: transparent transparent;
+}
+
+/* Sidebar layout */
+.sidebar {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+.projects-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  max-height: calc(100vh - 200px); /* Adjust this value based on your layout */
+}
+
+/* Scrollbar styles */
+.projects-container::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.projects-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.projects-container::-webkit-scrollbar-thumb {
+  background: #000000;
+  border-radius: 3px;
+}
+
+.projects-container::-webkit-scrollbar-thumb:hover {
+  background: #333333;
+}
+
+/* Firefox */
+.projects-container {
+  scrollbar-width: thin;
+  scrollbar-color: #000000 transparent;
+}
+
+/* Optional: Hide scrollbar when not scrolling */
+.projects-container:not(:hover)::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.projects-container:not(:hover) {
+  scrollbar-color: transparent transparent;
+}
+
+/* Ensure the todo list still scrolls if needed */
+.todo-list {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+/* Existing styles for scrollbars in todo-list */
+.todo-list::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.todo-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.todo-list::-webkit-scrollbar-thumb {
+  background: #000000;
+  border-radius: 3px;
+}
+
+.todo-list::-webkit-scrollbar-thumb:hover {
+  background: #333333;
+}
+
+.todo-list {
+  scrollbar-width: thin;
+  scrollbar-color: #000000 transparent;
+}

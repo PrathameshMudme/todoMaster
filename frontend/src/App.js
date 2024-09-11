@@ -5,19 +5,21 @@ import Filters from "./components/Filters";
 import Projects from "./components/Projects";
 import { TodoProvider } from "./context/TodoContext";
 
-function App() {
+export default function App() {
   return (
     <TodoProvider>
       <div className="App">
         <header>
           <h1>
-            to<span>do</span>.
+            todo<span>Master</span>.
           </h1>
         </header>
         <main>
           <aside>
             <Filters />
-            <Projects />
+            <div className="projects-container sidebar">
+              <Projects />
+            </div>
           </aside>
           <section>
             <TodoList />
@@ -28,5 +30,3 @@ function App() {
     </TodoProvider>
   );
 }
-
-export default App;
