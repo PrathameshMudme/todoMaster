@@ -73,7 +73,7 @@ export const TodoProvider = ({ children }) => {
   const editTodo = async (id, title) => {
     try {
       const response = await axios.patch(
-        `${process.env.REACT_APP_BACKENDURL}/todos/${id}`,
+        `${process.env.REACT_APP_BACKENDURL}/api/todos/${id}`,
         { title }
       );
       setTodos((prevTodos) =>
